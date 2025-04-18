@@ -1,0 +1,416 @@
+{
+    "columns": {
+        "Odometer Rewind Yes/No Score": {
+            "type": "map",
+            "source": "Odometer exchange/rewind possibility detection",
+            "map": {
+                "Yes": -5,
+                "No": 5
+            },
+            "weight": 1
+        },
+        "Odometer Rewind Score": {
+            "type": "range",
+            "source": "Odometer exchange/rewind possibility detection - Distance",
+            "scoring_limits": [
+                0,
+                -5
+            ],
+            "dynamic_bins": true,
+            "weight": 1.5
+        },
+        "Odometer Value Score": {
+            "type": "range",
+            "source": "Odometer Value",
+            "scoring_limits": [
+                10,
+                -20
+            ],
+            "dynamic_bins": true,
+            "weight": 1.5
+        },
+        "Warning Score": {
+            "type": "map",
+            "source": "Warning Light Illuminates",
+            "map": {
+                "Yes": -5,
+                "No": 5
+            },
+            "weight": 0.5
+        },
+        "Current Warning Score": {
+            "type": "range",
+            "source": "Number of Current Warnings",
+            "scoring_limits": [
+                5,
+                -5
+            ],
+            "dynamic_bins": true,
+            "weight": 0.25
+        },
+        "Historical Warning Score": {
+            "type": "range",
+            "source": "Number of Historical Warnings",
+            "scoring_limits": [
+                5,
+                -5
+            ],
+            "dynamic_bins": true,
+            "weight": 0.25
+        },
+        "Accident Score": {
+            "type": "map",
+            "source": "Collision Detection(Yes/No)",
+            "map": {
+                "Yes": -10,
+                "No": 10
+            },
+            "weight": 1.5
+        },
+        "Trip Frequency Score": {
+            "type": "range",
+            "source": "Average Trips per Week",
+            "scoring_limits": [
+                5,
+                0
+            ],
+            "dynamic_bins": true,
+            "weight": 0.5
+        },
+        "Fuel Efficiency Score": {
+            "type": "range",
+            "source": "Fuel efficiency (Km/l)",
+            "scoring_limits": [
+                -10,
+                10
+            ],
+            "dynamic_bins": true,
+            "weight": 1.5
+        },
+        "Usage Distance Score": {
+            "type": "range",
+            "source": "Average Mileage (Km/Trip)",
+            "scoring_limits": [
+                -10,
+                10
+            ],
+            "dynamic_bins": true,
+            "weight": 1.5
+        },
+        "Speed Score": {
+            "type": "map",
+            "source": "Average Speed",
+            "map": {
+                "[-inf, 20]": -10,
+                "[20, 60]": 5,
+                "[60, 80]": 10,
+                "[80, 100]": -5,
+                "[100, inf]": -10
+            },
+            "weight": 0.5
+        },
+        "Health Score": {
+            "type": "map",
+            "source": "Diagnostic code detected - Priority",
+            "map": {
+                "Yes": -5,
+                "No": 5
+            },
+            "weight": 1
+        },
+        "DTC Occurrence Score": {
+            "type": "range",
+            "source": "DTC Count",
+            "scoring_limits": [
+                10,
+                -10
+            ],
+            "dynamic_bins": true,
+            "weight": 0.5
+        },
+        "Age Score": {
+            "type": "range",
+            "source": "car_age",
+            "scoring_limits": [
+                10,
+                -10
+            ],
+            "dynamic_bins": true,
+            "weight": 1.5
+        },
+        "Percentage Speed WRT Mileage < 20km/h Score": {
+            "type": "map",
+            "source": "Percentage Speed WRT Mileage < 20km/h",
+            "map": {
+                "[-inf, 25]": -0.5,
+                "[25, 50]": -0.25,
+                "[50, 75]": 0.5,
+                "[75, 100]": 0.75,
+                "[100, inf]": 0.75
+            },
+            "weight": -2
+        },
+        "Percentage Speed WRT Mileage 21 - 60km/h Score": {
+            "type": "map",
+            "source": "Percentage Speed WRT Mileage 21 - 60km/h",
+            "map": {
+                "[-inf, 25]": -0.75,
+                "[25, 50]": -1,
+                "[50, 75]": 0.5,
+                "[75, 100]": 0.75,
+                "[100, inf]": 0.75
+            },
+            "weight": -1
+        },
+        "Percentage Speed WRT Mileage 61 - 80km/h Score": {
+            "type": "map",
+            "source": "Percentage Speed WRT Mileage 61 - 80km/h",
+            "map": {
+                "[-inf, 25]": 0.5,
+                "[25, 50]": 1,
+                "[50, 75]": 1.5,
+                "[75, 100]": 2,
+                "[100, inf]": 2
+            },
+            "weight": 2
+        },
+        "Percentage Speed WRT Mileage 81 - 100 km/h Score": {
+            "type": "map",
+            "source": "Percentage Speed WRT Mileage 81 - 100 km/h",
+            "map": {
+                "[-inf, 25]": -0.75,
+                "[25, 50]": -1,
+                "[50, 75]": 0.5,
+                "[75, 100]": 0.75,
+                "[100, inf]": 0.75
+            },
+            "weight": -1
+        },
+        "Percentage Speed WRT Mileage > 100km/h Score": {
+            "type": "map",
+            "source": "Percentage Speed WRT Mileage > 100km/h",
+            "map": {
+                "[-inf, 25]": -0.5,
+                "[25, 50]": -0.25,
+                "[50, 75]": 0.5,
+                "[75, 100]": 0.75,
+                "[100, inf]": 0.75
+            },
+            "weight": -2
+        },
+        "Percentage Trips WRT Mileage < 20km/h Score": {
+            "type": "map",
+            "source": "Percentage Speed WRT Trips < 20km/h",
+            "map": {
+                "[-inf, 25]": -0.5,
+                "[25, 50]": -0.25,
+                "[50, 75]": 0.5,
+                "[75, 100]": 0.75,
+                "[100, inf]": 0.75
+            },
+            "weight": -2
+        },
+        "Percentage Trips WRT Mileage 21 - 60km/h Score": {
+            "type": "map",
+            "source": "Percentage Speed WRT Trips 21 - 60km/h",
+            "map": {
+                "[-inf, 25]": -0.75,
+                "[25, 50]": -1,
+                "[50, 75]": 0.5,
+                "[75, 100]": 0.75,
+                "[100, inf]": 0.75
+            },
+            "weight": -1
+        },
+        "Percentage Trips WRT Mileage 61 - 80km/h Score": {
+            "type": "map",
+            "source": "Percentage Speed WRT Trips 61 - 80km/h",
+            "map": {
+                "[-inf, 25]": 0.5,
+                "[25, 50]": 1,
+                "[50, 75]": 1.5,
+                "[75, 100]": 2,
+                "[100, inf]": 2
+            },
+            "weight": 2
+        },
+        "Percentage Trips WRT Mileage 81 - 100 km/h Score": {
+            "type": "map",
+            "source": "Percentage Speed WRT Trips 81 - 100km/h",
+            "map": {
+                "[-inf, 25]": -0.75,
+                "[25, 50]": -1,
+                "[50, 75]": 0.5,
+                "[75, 100]": 0.75,
+                "[100, inf]": 0.75
+            },
+            "weight": -1
+        },
+        "Percentage Trips WRT Mileage > 100km/h Score": {
+            "type": "map",
+            "source": "Percentage Speed WRT Trips >100 km/h",
+            "map": {
+                "[-inf, 25]": -0.5,
+                "[25, 50]": -0.25,
+                "[50, 75]": 0.5,
+                "[75, 100]": 0.75,
+                "[100, inf]": 0.75
+            },
+            "weight": -2
+        },
+        "Road Surface Category 1 Score": {
+            "type": "map",
+            "source": "Percentage Road surface category 1 (km)",
+            "map": {
+                "[-inf, 25]": -0.5,
+                "[25, 50]": -0.25,
+                "[50, 75]": 0.5,
+                "[75, 100]": 0.75,
+                "[100, inf]": 0.75
+            },
+            "weight": -1
+        },
+        "Road Surface Category 2 Score": {
+            "type": "map",
+            "source": "Percentage Road surface category 2 (km)",
+            "map": {
+                "[-inf, 25]": -0.5,
+                "[25, 50]": -0.25,
+                "[50, 75]": 0.5,
+                "[75, 100]": 0.75,
+                "[100, inf]": 0.75
+            },
+            "weight": -1.5
+        },
+        "Road Surface Category 3 Score": {
+            "type": "map",
+            "source": "Percentage Road surface category 3 (km)",
+            "map": {
+                "[-inf, 25]": 0.25,
+                "[25, 50]": 0.5,
+                "[50, 75]": 0.75,
+                "[75, 100]": 1,
+                "[100, inf]": 1
+            },
+            "weight": 1
+        },
+        "Road Surface Category 4 Score": {
+            "type": "map",
+            "source": "Percentage Road surface category 4 (km)",
+            "map": {
+                "[-inf, 25]": -0.5,
+                "[25, 50]": -0.25,
+                "[50, 75]": 0.5,
+                "[75, 100]": 0.75,
+                "[100, inf]": 0.75
+            },
+            "weight": -2
+        },
+        "Road Surface Category 5 Score": {
+            "type": "map",
+            "source": "Percentage Road surface category 5 (km)",
+            "map": {
+                "[-inf, 25]": 0.25,
+                "[25, 50]": 0.5,
+                "[50, 75]": 0.75,
+                "[75, 100]": 1,
+                "[100, inf]": 1
+            },
+            "weight": 1.5
+        },
+        "Road Surface Category 6 Score": {
+            "type": "map",
+            "source": "Percentage Road surface category 6 (km)",
+            "map": {
+                "[-inf, 25]": 0.25,
+                "[25, 50]": 0.5,
+                "[50, 75]": 0.75,
+                "[75, 100]": 1,
+                "[100, inf]": 1
+            },
+            "weight": 2
+        },
+        "Share of Trips with DTC Score": {
+            "type": "map",
+            "source": "Percentage Trips with DTC",
+            "map": {
+                "[-inf, 25]": 1,
+                "[25, 50]": 0.75,
+                "[50, 75]": 0.5,
+                "[75, 100]": 0.25,
+                "[100, inf]": 0.25
+            },
+            "weight": 1
+        },
+        "Count of Collision Score": {
+            "type": "range",
+            "source": "collision count",
+            "scoring_limits": [
+                10,
+                -10
+            ],
+            "dynamic_bins": true,
+            "weight": 1.5
+        }
+    },
+    "weighted_overall_score_columns": [
+        "Odometer Rewind Yes/No Score",
+        "Odometer Rewind Score",
+        "Odometer Value Score",
+        "Warning Score",
+        "Current Warning Score",
+        "Historical Warning Score",
+        "Fuel Efficiency Score",
+        "Usage Distance Score",
+        "Speed Score",
+        "Health Score",
+        "DTC Occurrence Score",
+        "Accident Score",
+        "Age Score",
+        "Percentage Speed WRT Mileage < 20km/h Score",
+        "Percentage Speed WRT Mileage 21 - 60km/h Score",
+        "Percentage Speed WRT Mileage 61 - 80km/h Score",
+        "Percentage Speed WRT Mileage 81 - 100 km/h Score",
+        "Percentage Speed WRT Mileage > 100km/h Score",
+        "Percentage Trips WRT Mileage < 20km/h Score",
+        "Percentage Trips WRT Mileage 21 - 60km/h Score",
+        "Percentage Trips WRT Mileage 61 - 80km/h Score",
+        "Percentage Trips WRT Mileage 81 - 100 km/h Score",
+        "Percentage Trips WRT Mileage > 100km/h Score",
+        "Road Surface Category 1 Score",
+        "Road Surface Category 2 Score",
+        "Road Surface Category 3 Score",
+        "Road Surface Category 4 Score",
+        "Road Surface Category 5 Score",
+        "Road Surface Category 6 Score",
+        "Share of Trips with DTC Score",
+        "Count of Collision Score"
+    ],
+    "ranking_categories": {
+        "Ranking Category": {
+            "dynamic_bins": true,
+            "labels": [
+                "Poor",
+                "Below Average",
+                "Average",
+                "Good",
+                "Excellent"
+            ]
+        },
+        "Score Category": {
+            "dynamic_bins": true,
+            "labels": [
+                "Critical: F",
+                "Very Poor: E",
+                "Poor: D",
+                "Below Average: D+",
+                "Fair: C",
+                "Above Average: C+",
+                "Good: B",
+                "Very Good: B+",
+                "Excellent: A",
+                "Outstanding: A+"
+            ]
+        }
+    }
+}
